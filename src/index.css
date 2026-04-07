@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap');
+
+:root {
+  --bg-primary: #1A1A1A;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #222222;
+  --text-light: #F4F4F4;
+  --text-dark: #121212;
+  --accent-color: #00FFAA;
+  --text-muted: #888888;
+  --font-main: 'Inter', sans-serif;
+  --transition-fast: 0.2s ease-in-out;
+  --transition-smooth: 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  --section-padding: 100px 5%;
+}
+
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-light);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Premium Noise Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+ul {
+  list-style: none;
+}
+
+/* Custom Cursor */
+body, a, button, .cursor-pointer {
+  cursor: none !important;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0; left: 0; width: 8px; height: 8px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0; left: 0; width: 40px; height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Sections & Layout */
+section {
+  padding: var(--section-padding);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-dark {
+  background-color: transparent;
+  color: inherit;
+}
+
+.section-light {
+  background-color: transparent;
+  color: inherit;
+}
+
+.section-light .text-muted {
+  color: #555555;
+}
+
+.accent-text {
+  color: var(--accent-color);
+}
+
+/* Button & Links */
+.btn-primary {
+  display: inline-block;
+  padding: 16px 32px;
+  background-color: transparent;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px rgba(0, 255, 170, 0.4);
+}
+
+/* Typography styles */
+.hero-title {
+  font-size: clamp(3rem, 8vw, 8rem);
+  text-transform: uppercase;
+}
+
+/* Utilities */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Micro-animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 1s var(--transition-smooth) forwards;
+  opacity: 0;
+}
+
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .hero-title { font-size: clamp(2.5rem, 6vw, 4rem); }
+  
+  .project-card {
+    flex-direction: column !important;
+    gap: 30px !important;
+    margin-bottom: 60px !important;
+  }
+  
+  .project-card > div {
+    text-align: left !important;
+  }
+  
+  .project-image-container {
+    height: 250px !important;
+  }
+  
+  section {
+    padding: 80px 5% !important;
+  }
+}
