@@ -171,25 +171,179 @@ section {
 .stagger-2 { animation-delay: 0.2s; }
 .stagger-3 { animation-delay: 0.3s; }
 
-/* Responsive Adjustments */
+/* ============================================
+   RESPONSIVE — MOBILE (max-width: 768px)
+   Desktop layout is completely untouched.
+   All overrides are scoped inside this block.
+   ============================================ */
+
+/* Tablet tweaks */
 @media (max-width: 900px) {
   .hero-title { font-size: clamp(2.5rem, 6vw, 4rem); }
-  
+
   .project-card {
     flex-direction: column !important;
     gap: 30px !important;
     margin-bottom: 60px !important;
   }
-  
+
   .project-card > div {
     text-align: left !important;
   }
-  
+
   .project-image-container {
     height: 250px !important;
   }
-  
+
   section {
     padding: 80px 5% !important;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+
+  /* === Custom cursor: hide on touch devices === */
+  .custom-cursor-premium {
+    display: none !important;
+  }
+  body, a, button, .cursor-pointer {
+    cursor: auto !important;
+  }
+
+  /* === Global === */
+  section {
+    padding: 70px 5% !important;
+  }
+
+  /* === Hero Section === */
+  .hero-section {
+    min-height: 100svh !important;
+    align-items: flex-start !important;
+  }
+
+  /* Hide portrait photo on mobile — text is the hero */
+  .hero-section .container > div:first-child {
+    display: none !important;
+  }
+
+  /* Hide vertical side social links */
+  .hero-section > div[style*="left: 2vw"] {
+    display: none !important;
+  }
+
+  /* Giant name text — scale down massively for mobile */
+  .hero-section span[style*="font-size: clamp(5rem"] {
+    font-size: clamp(3.5rem, 18vw, 6rem) !important;
+  }
+
+  /* Hero buttons — stack vertically */
+  .hero-section div[style*="display: flex"][style*="gap: 20px"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+  }
+
+  /* === Services Section === */
+  /* auto-fit minmax already handles wrapping — just reduce padding */
+  #services h2 {
+    font-size: 2.2rem !important;
+    margin-bottom: 36px !important;
+  }
+
+  /* === Skills Section === */
+  .skills-container,
+  section.section-dark div[style*="padding: 50px"] {
+    padding: 24px !important;
+    gap: 14px !important;
+  }
+
+  section.section-dark h2[style*="4.5rem"] {
+    font-size: 2.5rem !important;
+  }
+
+  /* === Work Section === */
+  #work h2 {
+    font-size: 2.5rem !important;
+    margin-bottom: 50px !important;
+  }
+
+  /* Stack project card layout vertically */
+  div[style*="display: flex"][style*="alignItems: center"][style*="gap: 60px"] {
+    flex-direction: column !important;
+    gap: 28px !important;
+  }
+
+  /* Image boxes — reasonable mobile height */
+  .project-image-container {
+    height: 220px !important;
+  }
+
+  /* Project title text */
+  div[style*="flex: 1"][style*="textAlign"] h3 {
+    font-size: 1.8rem !important;
+  }
+
+  /* Right-aligned project → force left-align on mobile */
+  div[style*="textAlign: right"] {
+    text-align: left !important;
+  }
+
+  div[style*="justifyContent: flex-end"] {
+    justify-content: flex-start !important;
+  }
+
+  /* Case study expanded panel */
+  div[style*="gridTemplateColumns: repeat(auto-fit, minmax(250px, 1fr))"] {
+    grid-template-columns: 1fr !important;
+    padding: 28px !important;
+    gap: 24px !important;
+  }
+
+  /* === Experience Section === */
+  #experience h2 {
+    font-size: 2.2rem !important;
+    margin-bottom: 36px !important;
+  }
+
+  /* Stack each timeline row vertically */
+  #experience div[style*="display: flex"][style*="justifyContent: space-between"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+    padding: 24px 0 !important;
+  }
+
+  #experience div[style*="width: 25%"],
+  #experience div[style*="width: 45%"],
+  #experience div[style*="width: 30%"] {
+    width: 100% !important;
+    text-align: left !important;
+  }
+
+  /* === Footer === */
+  footer .container {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 36px !important;
+  }
+
+  footer .container > div {
+    text-align: left !important;
+    flex: unset !important;
+    width: 100% !important;
+  }
+
+  footer div[style*="justifyContent: flex-end"] {
+    justify-content: flex-start !important;
+  }
+
+  footer div[style*="justifyContent: center"] {
+    justify-content: flex-start !important;
+  }
+
+  /* Footer marquee — smaller text */
+  footer h1[style*="clamp"] {
+    font-size: clamp(3rem, 12vw, 6rem) !important;
   }
 }
