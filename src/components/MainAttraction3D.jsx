@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { MeshDistortMaterial, Sphere, Environment, Float, Stars, Sparkles } from '@react-three/drei';
 import * as THREE from 'three';
@@ -46,6 +46,27 @@ const DarkMatterBlob = () => {
 };
 
 const MainAttraction3D = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  if (isMobile) {
+    return (
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1, pointerEvents: 'none' }}>
+        {/* Beautiful static background matching the design, zero computational overhead */}
+        <div style={{ position: 'absolute', width: '100%', height: '100%', background: 'radial-gradient(circle at 70% 30%, rgba(0, 255, 170, 0.08), transparent 60%)' }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '50vh', background: 'linear-gradient(to top, var(--bg-primary) 0%, transparent 100%)', pointerEvents: 'none' }} />
+      </div>
+    );
+  }
+
   return (
     <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1, pointerEvents: 'none' }}>
       <Canvas camera={{ position: [0, 0, 8] }} dpr={[1, 2]}>
