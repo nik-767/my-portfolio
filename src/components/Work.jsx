@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const ProjectCard = ({ title, category, align, details, imageUrl, githubUrl }) => {
+const ProjectCard = ({ title, category, align, details, imageUrl, githubUrl, demoUrl }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -14,32 +14,34 @@ const ProjectCard = ({ title, category, align, details, imageUrl, githubUrl }) =
       style={{ display: 'flex', flexDirection: 'column', marginBottom: '120px' }}>
       
       {/* Top Main Section */}
-      <div style={{ display: 'flex', flexDirection: align === 'right' ? 'row-reverse' : 'row', alignItems: 'center', gap: '60px', width: '100%' }}>
-        <div style={{ flex: 1, width: '100%' }}>
-          <div className="project-image-container" style={{ width: '100%', height: '400px', backgroundColor: 'var(--bg-card)', borderRadius: '12px', overflow: 'hidden', position: 'relative', transition: 'transform var(--transition-smooth)', cursor: 'pointer' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.02)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
-             
-             {/* Dynamic Thumbnail Setup */}
-             {imageUrl ? (
-               <>
-                 <img src={imageUrl} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.7) contrast(1.2)' }} />
-                 {/* Premium Overlay effect */}
-                 <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(10,10,10,0.8) 100%)' }}></div>
-               </>
-             ) : (
-               <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(135deg, #111, #2a2a2a)' }}></div>
-             )}
-             
-             <div style={{ position: 'absolute', bottom: '25px', right: '30px', color: '#FFF', fontWeight: 'bold', fontSize: '0.8rem', letterSpacing: '2px', background: 'rgba(255,255,255,0.1)', padding: '10px 20px', borderRadius: '50px', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)' }}>VIEW DEMO &rarr;</div>
-          </div>
+      <div className={`project-row ${align === 'right' ? 'row-reverse' : ''}`}>
+        <div className="project-image-column">
+          <a href={demoUrl} target="_blank" rel="noreferrer" style={{ display: 'block', textDecoration: 'none' }}>
+            <div className="project-image-container" style={{ width: '100%', height: '400px', backgroundColor: 'var(--bg-card)', borderRadius: '12px', overflow: 'hidden', position: 'relative', transition: 'transform var(--transition-smooth)', cursor: 'pointer' }} onMouseOver={e => e.currentTarget.style.transform = 'scale(1.02)'} onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}>
+               
+               {/* Dynamic Thumbnail Setup */}
+               {imageUrl ? (
+                  <>
+                    <img src={imageUrl} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.7) contrast(1.2)' }} />
+                    {/* Premium Overlay effect */}
+                    <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(10,10,10,0.8) 100%)' }}></div>
+                  </>
+               ) : (
+                  <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(135deg, #111, #2a2a2a)' }}></div>
+               )}
+               
+               <div style={{ position: 'absolute', bottom: '25px', right: '30px', color: '#FFF', fontWeight: 'bold', fontSize: '0.8rem', letterSpacing: '2px', background: 'rgba(255,255,255,0.1)', padding: '10px 20px', borderRadius: '50px', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)' }}>VIEW DEMO &rarr;</div>
+            </div>
+          </a>
         </div>
-        <div style={{ flex: 1, textAlign: align === 'right' ? 'right' : 'left' }}>
+        <div className={`project-content-column ${align === 'right' ? 'text-right' : 'text-left'}`}>
           <p style={{ color: 'var(--accent-color, #AAA)', letterSpacing: '3px', textTransform: 'uppercase', fontSize: '0.85rem', fontWeight: 800, marginBottom: '15px' }}>{category}</p>
           <h3 style={{ fontSize: '3rem', marginBottom: '25px', lineHeight: 1.1 }}>{title}</h3>
           <p style={{ color: 'var(--text-light, #CCC)', opacity: 0.8, marginBottom: '40px', maxWidth: '500px', marginLeft: align === 'right' ? 'auto' : '0', fontSize: '1.1rem' }}>
             A comprehensive implementation showcasing scalable backend mechanics seamlessly integrated with a high-end modern frontend user experience.
           </p>
           
-          <div style={{ display: 'flex', alignItems: 'center', gap: '25px', justifyContent: align === 'right' ? 'flex-end' : 'flex-start' }}>
+          <div className={`project-actions ${align === 'right' ? 'justify-end' : 'justify-start'}`}>
             <button onClick={() => setIsExpanded(!isExpanded)} className="btn-primary" style={{ padding: '15px 30px', borderRadius: '50px', background: '#FFF', color: '#000', border: 'none', fontWeight: 'bold', cursor: 'pointer', transition: 'opacity 0.3s' }} onMouseOver={e=>e.target.style.opacity='0.8'} onMouseOut={e=>e.target.style.opacity='1'}>
               {isExpanded ? 'Close Case Study' : 'View Deep Dive'}
             </button>
@@ -65,7 +67,7 @@ const ProjectCard = ({ title, category, align, details, imageUrl, githubUrl }) =
             transition={{ duration: 0.5, ease: "easeInOut" }}
             style={{ overflow: 'hidden', padding: '0 20px' }}
           >
-            <div style={{ backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '60px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '40px' }}>
+            <div className="project-details-grid">
               <div>
                 <h4 style={{ color: 'var(--accent-color, #FFF)', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.85rem' }}>The Challenge</h4>
                 <p style={{ opacity: 0.8, lineHeight: 1.8, color: '#CCC' }}>{details.challenge}</p>
@@ -100,6 +102,7 @@ const Work = () => {
           align="left" 
           imageUrl="https://images.unsplash.com/photo-1618044733300-9472054094ee?q=80&w=1000&auto=format&fit=crop"
           githubUrl="https://github.com/nik-767/MindMateAI-Career-Advisor.git"
+          demoUrl="https://mindmateai-career-advisor.onrender.com/"
           details={{
             challenge: "Creating a personalized roadmap generator that scales across millions of potential career trajectories while maintaining sub-second response times.",
             architecture: "Built on AWS Lambda leveraging a distributed Redis caching layer and streaming ChatGPT completions via WebSockets to the React frontend.",
@@ -108,15 +111,16 @@ const Work = () => {
         />
         
         <ProjectCard 
-          title="CloudSaver AI" 
+          title="Sport-Sentry-AI" 
           category="Hackathon Project" 
           align="right" 
-          imageUrl="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop"
-          githubUrl="https://github.com/nik-767/CloudSaver-ai.git"
+          imageUrl="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1000&auto=format&fit=crop"
+          githubUrl="https://github.com/nik-767/Sport-Sentry-AI.git"
+          demoUrl="https://sport-sentry-ai-hack3.vercel.app/"
           details={{
-            challenge: "Aggregating scattered cloud usage data to pinpoint and automatically resolve redundant high-cost infrastructure securely.",
-            architecture: "A complex data pipeline utilizing Node.js microservices, PostgreSQL, and OAuth2 securely scanning AWS/GCP telemetry data.",
-            outcome: "Won first place in the hackathon, capable of identifying an average of $300/mo savings for test accounts within 10 seconds."
+            challenge: "Building a secure, scalable hackathon platform for sports event monitoring and real-time data streaming under strict performance constraints.",
+            architecture: "Leveraged a microservices layout incorporating FastAPI/Django for scalable workflows, WebSockets for live alerts, and React for responsive dashboard telemetry.",
+            outcome: "Completed and demonstrated a functional, robust prototype featuring live notifications and seamless frontend-backend synchronization."
           }}
         />
       </div>
