@@ -171,11 +171,142 @@ section {
 .stagger-2 { animation-delay: 0.2s; }
 .stagger-3 { animation-delay: 0.3s; }
 
-/* ============================================
-   RESPONSIVE — MOBILE (max-width: 768px)
-   Desktop layout is completely untouched.
-   All overrides are scoped inside this block.
-   ============================================ */
+/* ==========================================================================
+   EXPERIENCE & PROJECT SECTIONS (DESKTOP STYLES)
+   ========================================================================== */
+
+/* Experience Section Styles */
+.experience-section {
+  padding: 120px 5%;
+}
+
+.experience-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.experience-title {
+  font-size: 3.5rem;
+  margin-bottom: 60px;
+  font-weight: 900;
+}
+
+.experience-list-container {
+  border-top: 2px solid #EAEAEA;
+}
+
+.experience-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px 0;
+  border-bottom: 1px solid #EAEAEA;
+  transition: background-color 0.3s ease;
+}
+
+.experience-row:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Light mode hover adjustment since section-light is white in light sections */
+.section-light .experience-row:hover {
+  background-color: #FAFAFA;
+}
+
+.experience-year {
+  width: 25%;
+  color: #666;
+  font-weight: 600;
+}
+
+.experience-details {
+  width: 45%;
+}
+
+.experience-role {
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+.experience-bullets {
+  margin-top: 10px;
+  padding-left: 20px;
+  list-style-type: disc;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.experience-bullets li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.experience-company {
+  width: 30%;
+  text-align: right;
+  color: #333;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Work Section Styles */
+.project-row {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+}
+
+.project-row.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.project-image-column {
+  flex: 1;
+  width: 100%;
+}
+
+.project-content-column {
+  flex: 1;
+}
+
+.project-content-column.text-right {
+  text-align: right;
+}
+
+.project-content-column.text-left {
+  text-align: left;
+}
+
+.project-actions {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.project-actions.justify-end {
+  justify-content: flex-end;
+}
+
+.project-actions.justify-start {
+  justify-content: flex-start;
+}
+
+.project-details-grid {
+  background-color: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 60px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE — OVERRIDES (Desktop layout is completely untouched)
+   ========================================================================== */
 
 /* Tablet tweaks */
 @media (max-width: 900px) {
@@ -185,10 +316,6 @@ section {
     flex-direction: column !important;
     gap: 30px !important;
     margin-bottom: 60px !important;
-  }
-
-  .project-card > div {
-    text-align: left !important;
   }
 
   .project-image-container {
@@ -245,7 +372,6 @@ section {
   }
 
   /* === Services Section === */
-  /* auto-fit minmax already handles wrapping — just reduce padding */
   #services h2 {
     font-size: 2.2rem !important;
     margin-bottom: 36px !important;
@@ -269,7 +395,7 @@ section {
   }
 
   /* Stack project card layout vertically */
-  div[style*="display: flex"][style*="alignItems: center"][style*="gap: 60px"] {
+  .project-row {
     flex-direction: column !important;
     gap: 28px !important;
   }
@@ -280,21 +406,25 @@ section {
   }
 
   /* Project title text */
-  div[style*="flex: 1"][style*="textAlign"] h3 {
+  .project-content-column h3 {
     font-size: 1.8rem !important;
   }
 
-  /* Right-aligned project → force left-align on mobile */
-  div[style*="textAlign: right"] {
+  /* Force left-align on mobile */
+  .project-content-column {
     text-align: left !important;
   }
 
-  div[style*="justifyContent: flex-end"] {
+  .project-content-column p {
+    margin-left: 0 !important;
+  }
+
+  .project-actions {
     justify-content: flex-start !important;
   }
 
   /* Case study expanded panel */
-  div[style*="gridTemplateColumns: repeat(auto-fit, minmax(250px, 1fr))"] {
+  .project-details-grid {
     grid-template-columns: 1fr !important;
     padding: 28px !important;
     gap: 24px !important;
@@ -307,18 +437,22 @@ section {
   }
 
   /* Stack each timeline row vertically */
-  #experience div[style*="display: flex"][style*="justifyContent: space-between"] {
+  .experience-row {
     flex-direction: column !important;
     align-items: flex-start !important;
-    gap: 6px !important;
+    gap: 8px !important;
     padding: 24px 0 !important;
   }
 
-  #experience div[style*="width: 25%"],
-  #experience div[style*="width: 45%"],
-  #experience div[style*="width: 30%"] {
+  .experience-year,
+  .experience-details,
+  .experience-company {
     width: 100% !important;
     text-align: left !important;
+  }
+
+  .experience-company {
+    margin-top: 4px;
   }
 
   /* === Footer === */
