@@ -220,7 +220,24 @@ const Hero = () => {
           { name: 'LINKEDIN', url: 'https://www.linkedin.com/in/nikhil-kalra-343t' },
           { name: 'EMAIL', url: 'mailto:nikhilkalra124421@gmail.com' }
         ].map((link, i) => (
-          <a key={i} href={link.url} target={link.url.startsWith('mailto') ? '_self' : '_blank'} rel="noreferrer" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', color: 'rgba(255,255,255,0.4)', textDecoration: 'none', fontSize: '0.8rem', letterSpacing: '4px', transition: 'color 0.3s' }} onMouseOver={e=>e.target.style.color='#FFF'} onMouseOut={e=>e.target.style.color='rgba(255,255,255,0.4)'}>
+          <a 
+            key={i} 
+            href={link.url} 
+            onClick={(e) => {
+              if (link.url.startsWith('mailto:')) {
+                e.preventDefault();
+                const email = link.url.replace('mailto:', '');
+                navigator.clipboard.writeText(email);
+                alert(`Email copied to clipboard: ${email}`);
+                window.location.href = link.url;
+              }
+            }}
+            target={link.url.startsWith('mailto') ? '_self' : '_blank'} 
+            rel="noreferrer" 
+            style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', color: 'rgba(255,255,255,0.4)', textDecoration: 'none', fontSize: '0.8rem', letterSpacing: '4px', transition: 'color 0.3s' }} 
+            onMouseOver={e=>e.target.style.color='#FFF'} 
+            onMouseOut={e=>e.target.style.color='rgba(255,255,255,0.4)'}
+          >
             {link.name}
           </a>
         ))}

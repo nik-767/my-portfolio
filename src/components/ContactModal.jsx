@@ -111,7 +111,21 @@ const ContactModal = () => {
             </button>
 
             <h2 style={{ fontSize: '3rem', marginBottom: '10px' }}>Say <span className="accent-text">Hello.</span></h2>
-            <p style={{ color: '#888', marginBottom: '40px', fontSize: '1.2rem' }}>Drop a line. Open to engineering opportunities.</p>
+            <p style={{ color: '#888', marginBottom: '40px', fontSize: '1.2rem', lineHeight: 1.5 }}>
+              Drop a line. Open to engineering opportunities. Or email directly: <a 
+                href="mailto:nikhilkalra124421@gmail.com" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  const email = 'nikhilkalra124421@gmail.com';
+                  navigator.clipboard.writeText(email);
+                  alert(`Email copied to clipboard: ${email}`);
+                  window.location.href = `mailto:${email}`;
+                }}
+                style={{ color: 'var(--accent-color, #00FFAA)', fontWeight: 'bold', textDecoration: 'underline' }}
+              >
+                nikhilkalra124421@gmail.com
+              </a>
+            </p>
 
             <form onSubmit={onSubmit}>
               <input type="text" name="name" placeholder="Name" style={inputStyle} required disabled={isSubmitting} />

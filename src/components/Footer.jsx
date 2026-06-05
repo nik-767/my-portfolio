@@ -66,7 +66,22 @@ const Footer = () => {
           <div style={{ display: 'flex', gap: '20px', justifyContent: 'flex-end', marginBottom: '20px' }}>
             <a href="https://github.com/nik-767" target="_blank" rel="noreferrer" style={{ color: '#FFF', textDecoration: 'none', opacity: 0.7, transition: 'opacity 0.3s' }} onMouseOver={e=>e.target.style.opacity=1} onMouseOut={e=>e.target.style.opacity=0.7}>GitHub</a>
             <a href="https://www.linkedin.com/in/nikhil-kalra-343t" target="_blank" rel="noreferrer" style={{ color: '#FFF', textDecoration: 'none', opacity: 0.7, transition: 'opacity 0.3s' }} onMouseOver={e=>e.target.style.opacity=1} onMouseOut={e=>e.target.style.opacity=0.7}>LinkedIn</a>
-            <a href="mailto:nikhilkalra124421@gmail.com" target="_self" style={{ color: '#FFF', textDecoration: 'none', opacity: 0.7, transition: 'opacity 0.3s' }} onMouseOver={e=>e.target.style.opacity=1} onMouseOut={e=>e.target.style.opacity=0.7}>Email</a>
+            <a 
+              href="mailto:nikhilkalra124421@gmail.com" 
+              onClick={(e) => {
+                e.preventDefault();
+                const email = 'nikhilkalra124421@gmail.com';
+                navigator.clipboard.writeText(email);
+                alert(`Email copied to clipboard: ${email}`);
+                window.location.href = `mailto:${email}`;
+              }}
+              target="_self" 
+              style={{ color: '#FFF', textDecoration: 'none', opacity: 0.7, transition: 'opacity 0.3s' }} 
+              onMouseOver={e=>e.target.style.opacity=1} 
+              onMouseOut={e=>e.target.style.opacity=0.7}
+            >
+              Email
+            </a>
           </div>
           <p style={{ color: '#555', fontSize: '0.8rem' }}>&copy; {new Date().getFullYear()} Nikhil Kalra. Engineered with React & Framer Motion.</p>
         </div>
