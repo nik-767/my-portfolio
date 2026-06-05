@@ -1,25 +1,83 @@
 import React from 'react';
 
 const Experience = () => {
-  const roles = [
-    { year: 'Phase 01', role: 'Web Development Intern', company: 'Industry Experience' },
-    { year: 'Phase 02', role: 'Hackathon Project Built', company: 'Competitive Building' },
-    { year: 'Phase 03', role: 'Open Source Contribution', company: 'Global Community' }
+  const experiences = [
+    {
+      year: 'Feb 2026 - Mar 2026',
+      role: 'Open Source Contributor',
+      company: 'AboutCode (Remote)',
+      bullets: [
+        'Contributed to the ScanCode.io Django-based open-source project.',
+        'Worked on backend debugging, issue analysis, and documentation.',
+        'Used Git, GitHub, Docker, and collaborative development workflows.'
+      ]
+    },
+    {
+      year: 'Jun 2025 - Jul 2025',
+      role: 'Frontend Developer Intern',
+      company: 'CodSoft (Remote)',
+      bullets: [
+        'Developed responsive frontend interfaces and project-based web applications.',
+        'Worked with Git version control and collaborative workflows.'
+      ]
+    }
+  ];
+
+  const education = [
+    {
+      year: '2023 - 2026',
+      role: 'BCA (Bachelor of Computer Applications)',
+      company: 'ATMS Group of Institutions'
+    },
+    {
+      year: '2022 - 2023',
+      role: 'Intermediate',
+      company: 'Smt. Kamla Agarwal School'
+    },
+    {
+      year: '2020 - 2021',
+      role: 'Matriculation',
+      company: 'Smt. Kamla Agarwal School'
+    }
   ];
 
   return (
-    <section id="experience" className="section-light" style={{ padding: '120px 5%' }}>
-      <div className="container" style={{ maxWidth: '900px' }}>
-        <h2 style={{ fontSize: '3.5rem', marginBottom: '60px', fontWeight: 900 }}>Career Track</h2>
-        <div style={{ borderTop: '2px solid #EAEAEA' }}>
-          {roles.map((item, index) => (
-            <div key={index} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '40px 0', borderBottom: '1px solid #EAEAEA', transition: 'background-color 0.3s' }} onMouseOver={e => e.currentTarget.style.backgroundColor = '#FAFAFA'} onMouseOut={e => e.currentTarget.style.backgroundColor = 'transparent'}>
-              <div style={{ width: '25%', color: '#666', fontWeight: 600 }}>{item.year}</div>
-              <div style={{ width: '45%', fontWeight: '800', fontSize: '1.4rem' }}>{item.role}</div>
-              <div style={{ width: '30%', textAlign: 'right', color: '#333', fontSize: '1.1rem' }}>{item.company}</div>
+    <section id="experience" className="section-light experience-section">
+      <div className="container experience-container">
+        
+        {/* Work Experience */}
+        <h2 className="experience-title">Career Track</h2>
+        <div className="experience-list-container">
+          {experiences.map((item, index) => (
+            <div key={index} className="experience-row">
+              <div className="experience-year">{item.year}</div>
+              <div className="experience-details">
+                <div className="experience-role">{item.role}</div>
+                <ul className="experience-bullets">
+                  {item.bullets.map((bullet, idx) => (
+                    <li key={idx}>{bullet}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="experience-company">{item.company}</div>
             </div>
           ))}
         </div>
+
+        {/* Education */}
+        <h2 className="experience-title" style={{ marginTop: '80px' }}>Education</h2>
+        <div className="experience-list-container">
+          {education.map((item, index) => (
+            <div key={index} className="experience-row">
+              <div className="experience-year">{item.year}</div>
+              <div className="experience-details">
+                <div className="experience-role">{item.role}</div>
+              </div>
+              <div className="experience-company">{item.company}</div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
