@@ -303,6 +303,14 @@ section {
   gap: 40px;
 }
 
+/* Skills Bento Grid Layout */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  width: 100%;
+}
+
 
 /* ==========================================================================
    RESPONSIVE — OVERRIDES (Desktop layout is completely untouched)
@@ -311,6 +319,10 @@ section {
 /* Tablet tweaks */
 @media (max-width: 900px) {
   .hero-title { font-size: clamp(2.5rem, 6vw, 4rem); }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 
   .project-card {
     flex-direction: column !important;
@@ -382,6 +394,11 @@ section {
   section.section-dark div[style*="padding: 50px"] {
     padding: 24px !important;
     gap: 14px !important;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
 
   section.section-dark h2[style*="4.5rem"] {
