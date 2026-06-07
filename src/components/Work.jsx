@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const ProjectCard = ({ title, category, align, details, imageUrl, githubUrl, demoUrl }) => {
+const ProjectCard = ({ title, category, align, description, details, imageUrl, githubUrl, demoUrl }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -38,7 +38,7 @@ const ProjectCard = ({ title, category, align, details, imageUrl, githubUrl, dem
           <p style={{ color: 'var(--accent-color, #AAA)', letterSpacing: '3px', textTransform: 'uppercase', fontSize: '0.85rem', fontWeight: 800, marginBottom: '15px' }}>{category}</p>
           <h3 style={{ fontSize: '3rem', marginBottom: '25px', lineHeight: 1.1 }}>{title}</h3>
           <p style={{ color: 'var(--text-light, #CCC)', opacity: 0.8, marginBottom: '40px', maxWidth: '500px', marginLeft: align === 'right' ? 'auto' : '0', fontSize: '1.1rem' }}>
-            A comprehensive implementation showcasing scalable backend mechanics seamlessly integrated with a high-end modern frontend user experience.
+            {description}
           </p>
           
           <div className={`project-actions ${align === 'right' ? 'justify-end' : 'justify-start'}`}>
@@ -100,13 +100,14 @@ const Work = () => {
           title="MindMateAI Career Advisor" 
           category="Artificial Intelligence" 
           align="left" 
+          description="A personalized career guidance platform analyzing skills via text, ratings, or resume parsing to recommend matching job roles, map learning roadmaps, and identify skill gaps."
           imageUrl="https://images.unsplash.com/photo-1618044733300-9472054094ee?q=80&w=1000&auto=format&fit=crop"
           githubUrl="https://github.com/nik-767/MindMateAI-Career-Advisor.git"
           demoUrl="https://mindmateai-career-advisor.onrender.com/"
           details={{
-            challenge: "Creating a personalized roadmap generator that scales across millions of potential career trajectories while maintaining sub-second response times.",
-            architecture: "Built on AWS Lambda leveraging a distributed Redis caching layer and streaming ChatGPT completions via WebSockets to the React frontend.",
-            outcome: "Reduced average query time by 85% and processed thousands of successful comprehensive roadmaps during public beta."
+            challenge: "Structuring a comprehensive role taxonomy across Tech, Non-Tech, and Government sectors, while ensuring sub-second matching queries and resilient AI recommendations.",
+            architecture: "Leveraged a Flask (Python) REST API backend coupled with an interactive modern frontend and direct integration with Google Gemini AI for contextual career advice.",
+            outcome: "Completed a functional prototype featuring multi-mode skill assessments, dynamic phase-based learning roadmaps, and an interactive AI career assistant."
           }}
         />
         
@@ -114,6 +115,7 @@ const Work = () => {
           title="Sport-Sentry-AI" 
           category="Hackathon Project" 
           align="right" 
+          description="A comprehensive implementation showcasing scalable backend mechanics seamlessly integrated with a high-end modern frontend user experience."
           imageUrl="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1000&auto=format&fit=crop"
           githubUrl="https://github.com/nik-767/Sport-Sentry-AI.git"
           demoUrl="https://sport-sentry-ai-hack3.vercel.app/"
