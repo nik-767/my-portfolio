@@ -115,14 +115,14 @@ const Work = () => {
           title="Sport-Sentry-AI" 
           category="Hackathon Project" 
           align="right" 
-          description="A comprehensive implementation showcasing scalable backend mechanics seamlessly integrated with a high-end modern frontend user experience."
+          description="An AI-powered sports content piracy detection and automated DMCA takedown platform utilizing Gemini and NVIDIA LLaMA APIs."
           imageUrl="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1000&auto=format&fit=crop"
           githubUrl="https://github.com/nik-767/Sport-Sentry-AI.git"
           demoUrl="https://sport-sentry-ai-hack3.vercel.app/"
           details={{
-            challenge: "Building a secure, scalable hackathon platform for sports event monitoring and real-time data streaming under strict performance constraints.",
-            architecture: "Leveraged a microservices layout incorporating FastAPI/Django for scalable workflows, WebSockets for live alerts, and React for responsive dashboard telemetry.",
-            outcome: "Completed and demonstrated a functional, robust prototype featuring live notifications and seamless frontend-backend synchronization."
+            challenge: "Detecting unauthorized sports clip distribution in real-time across YouTube/socials and validating frame similarity to safeguard media rights.",
+            architecture: "Powered by a FastAPI backend, SQLite local database, and dual AI integration (NVIDIA LLaMA 3.1 405B for speed and Gemini 1.5 Flash for multimodal frame comparison).",
+            outcome: "Delivered an automated 3-step pipeline: registering assets, running AI-based visual comparisons, and auto-generating legal DMCA takedown drafts."
           }}
         />
       </div>
